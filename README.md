@@ -10,7 +10,7 @@
 
   <h1>tp-pds2: truco</h1>
   <p>Trabalho prático para a matéria de PDS2</p>
-  <p>Participantes: Aurora Cristina Bombassaro, Gabriel dos Reis Rezende da Silva, Gustavo Loureiro Muller Netto, Vitor Alencar de Mello</p>
+  <p>Participantes: Aurora Cristina Bombassaro, Gabriel dos Reis Rezende da Silva, Vitor Alencar de Mello</p>
 
   <h3>User Stories</h3>
 
