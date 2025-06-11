@@ -18,6 +18,7 @@ class Carta {
     Carta(const std::string& naipe, const std::string& valor);
     
     std::string getCarta() const; // aí no cpp vai dar "return valor + " de " naipe;"
+    std::string getValor() const; //será usado p/ comparar as não-manilhas
     void comparaCarta(const Carta& card, Carta& outra);
     bool validaJogada(const Carta& card, Carta& outra);
     ~Carta(){}
