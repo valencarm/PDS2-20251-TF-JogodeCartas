@@ -32,4 +32,5 @@ class Partida{
 
     ConfigurarPartida(int modo_jogo, int regras, int aposta);
 
-}
+};
+#endif
