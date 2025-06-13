@@ -13,7 +13,7 @@
 
         public:
             Jogador();
-            Jogador(int nome, int id);
+            Jogador(string nome, int id);
             void jogar();
             std::string getNome();
             void imprimirCartas();
