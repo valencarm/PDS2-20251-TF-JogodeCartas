@@ -1,36 +1,47 @@
-// Controlar o estado da partida
-// Controlar a pontuacao dos times
-// Definir o modo de jogo e o conjunto de regras
-// Gerenciar apostas
+#ifndef PARTIDA_H
+#define PARTIDA_H
 
-//Colaboracoes: Time, Rodada, Jogador
-
-#ifdef PARTIDA
-#define PARTIDA
-
+#include <vector>
 #include <iostream>
 
-class Partida{
-    private:
-    std::vector <int> pontuacao;
-    int conjunto_regras;
-    int modo_jogo;
+class Partida {
+private:
+    std::vector<int> pontuacao; 
+    int pontuacaoMaxima;
+    int conjuntoRegras;
+    int modoJogo;
     int aposta;
-    
-    public:
-    Partida(int regras, int modo_jogo, int aposta) {}
-    ~Partida() {}
 
-    setModojogo();
-    ConfigurarModo(int modo_jogo);
-    
-    setConjuntoregras();
-    ConfigurarRegras(int regras);
+public:
+    // Construtor e destrutor
+    Partida(int conjuntoRegras, int modoJogo, int aposta, int pontuacaoMaxima);
+    ~Partida();
 
-    setAposta();
-    ConfigurarAposta(int aposta);
+    // Configurações da partida
+    void setModojogo(int modoJogo);
+    void setPontuacaoMaxima(int modoJogo);
+    void ConfigurarModo(int modoJogo);
 
-    ConfigurarPartida(int modo_jogo, int regras, int aposta);
+    void setConjuntoregras(int conjuntoRegras);
+    void ConfigurarRegras(int conjuntoRegras);
 
+    void setAposta(int aposta);
+    void ConfigurarAposta(int aposta);
+
+    void ConfigurarPartida(int modoJogo, int conjuntoRegras, int aposta);
+
+    // Pontuação
+    void atualizarPontuacao(int time, int pontos);
+    int getPontuacao(int time) const;
+
+    // Fim de jogo
+    bool verificarFimDeJogo() const;
+    int getTimeVencedor() const;
+
+    // Visualização
+    void exibirEstado() const;
 };
+
+#endif
+
 #endif
