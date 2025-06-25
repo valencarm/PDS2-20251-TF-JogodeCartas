@@ -2,7 +2,7 @@
 // Validar jogadas e determinar vencedor
 // Gerenciar pontos e fim da rodada
 
-// Colaboracoes: Time, Partida, Jogador, Carta
+// Colaboracoes: Time, Partida, Jogador
 
 #ifdef RODADA_H
 #define RODADA_H
@@ -22,21 +22,25 @@ class Rodada {
 
    Time* Time1;
    Time* Time2;
+   int vitoriasT1, vitoriasT2;
+
    Jogador* jogadorAtual;
+   Jogador* vencedorAnterior;
 
    int pontoRodada;
    bool trucoPedido;
 
    public:
 
-   Rodada(Time* t1, Time* t2, const std::vector<Jogador*>& jogadores) {}
+   Rodada(Time* t1, Time* t2, const std::vector<Jogador*>& jogadores, Jogador* vencedorAnterior) {}
 
-   void ordenarJogadores();
+   void ordenarJogadores(Jogador* ultimoVencedor);
 
    bool ValidarJogada(Carta& carta, Jogador* jogador);
    void AdicionarCartaRodada(Carta& carta, Jogador* jogador);
    Jogador* DefinirVencedorMao();
    Time* DefinirVencedorRodada();
+   void proximoJogador();
 
    void pedirTruco();
    void pedirSeis();
@@ -46,10 +50,11 @@ class Rodada {
    void correrTruco();
 
    void finalizarRodada();
-   void distribuirPontos();
 
    void getvalorRodada();
    void getrodadaAtual();
+   void getjogadorAtual();
+   void getvencedorAnterior();
 
    void executarRodada();
 
