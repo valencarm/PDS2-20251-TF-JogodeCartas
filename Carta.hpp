@@ -21,6 +21,6 @@ class Carta {
     std::string getValor() const; //será usado p/ comparar as não-manilhas
     void comparaCarta(const Carta& card, Carta& outra);
     bool validaJogada(const Carta& card, Carta& outra);
-    ~Carta(){}
+    ~Carta();
 };
 #endif

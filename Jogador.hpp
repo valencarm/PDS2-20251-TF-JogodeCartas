@@ -13,11 +13,12 @@
 
         public:
             Jogador();
-            Jogador(string nome, int id);
-            void jogar();
-            std::string getNome();
-            void imprimirCartas();
-            void trucar();
+            Jogador(std::string nome, int id);
+            void Jogar();
+            std::string GetNome();
+            int GetId();
+            void ImprimirCartas();
+            void Trucar(Jogador& outro);
     };
 
 #endif
