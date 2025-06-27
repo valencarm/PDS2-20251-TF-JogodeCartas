@@ -1,5 +1,3 @@
-Sem problemas! Aqui está o texto com todas as informações sobre as regras do Truco Mineiro, mas sem acentos ou caracteres especiais, pronto para o seu jogo no terminal:
-
 ---------------------------------------------------
             BEM-VINDO AO TRUCO MINEIRO!
 ---------------------------------------------------
