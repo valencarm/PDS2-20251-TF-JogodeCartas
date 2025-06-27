@@ -1,0 +1,25 @@
+var NAVTREEINDEX0 =
+{
+"_baralho_8cpp.html":[0,0,0,0],
+"_carta_8cpp.html":[0,0,0,1],
+"_carta_8cpp.html#aa441aa550d92ff2fe073fef03fd73d78":[0,0,0,1,0],
+"_carta_8cpp.html#adc3222091579f12c1e71ca53c4ccb4ce":[0,0,0,1,1],
+"_jogador_8cpp.html":[0,0,0,2],
+"_jogador_8cpp.html#aca05d8a479cf84bd24c4f0056a3fe405":[0,0,0,2,0],
+"_jogador_8cpp.html#ae780a8c34232a383c6a4fb203e1090d3":[0,0,0,2,1],
+"_jogo_8cpp.html":[0,0,0,3],
+"_partida_8cpp.html":[0,0,0,5],
+"_partida_8cpp_source.html":[0,0,0,5],
+"_rodada_8cpp.html":[0,0,0,6],
+"_time_8cpp.html":[0,0,0,7],
+"_time_8cpp.html#ae7d690e16408e1fd1743512577d1840a":[0,0,0,7,0],
+"dir_68267d1309a1af8e8297ef4c3efbcdba.html":[0,0,0],
+"files.html":[0,0],
+"globals.html":[0,1,0],
+"globals_func.html":[0,1,1],
+"globals_vars.html":[0,1,2],
+"index.html":[],
+"main_8cpp.html":[0,0,0,4],
+"main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4":[0,0,0,4,0],
+"pages.html":[]
+};
