@@ -1,26 +1,27 @@
-//Criar um baralho de Truco
-//Embaralhar, organizar e distribuir as cartas
-//Lidar com ações especiais
-//Definir quem embaralha e repor cartas
-
-//RESPONSABILIDADES : ARMAZENAR VsALOR E NAIPE, COMPARAR C/ OUTRAS CARTAS, VALIDAR JOGADA, RETORNAR IMAGEM DA CARTA
-
-#ifndef CARTA
-#define CARTA
+#ifndef CARTA_HPP
+#define CARTA_HPP
 #include <iostream>
 #include <string>
+#include <algorithm>
+#include <vector>
+#include <stdexcept>
+
+
 class Carta {
-    private: 
+private:
     std::string naipe;
     std::string valor;
-   
-    public: 
+
+public:
     Carta(const std::string& naipe, const std::string& valor);
+
+    std::string getCarta() const;
+    std::string getValor() const;
+    static bool comparaCarta(const Carta& c1, const Carta& c2);
+    static bool validaJogada(const std::vector<Carta>& maoJogador, const Carta& cartaJogada);
     
-    std::string getCarta() const; // aí no cpp vai dar "return valor + " de " naipe;"
-    std::string getValor() const; //será usado p/ comparar as não-manilhas
-    void comparaCarta(const Carta& card, Carta& outra);
-    bool validaJogada(const Carta& card, Carta& outra);
-    ~Carta();
+
+    ~Carta() {}
 };
+
 #endif
