@@ -14,6 +14,8 @@ class Time{
         void ImprimirTime();
         int GetPontos();
         void GanharQueda(int valorQueda);
+        void AceitarTruco();
+        void GanharMao();
 
 };
 

@@ -1,0 +1,67 @@
+Sem problemas! Aqui está o texto com todas as informações sobre as regras do Truco Mineiro, mas sem acentos ou caracteres especiais, pronto para o seu jogo no terminal:
+
+---------------------------------------------------
+            BEM-VINDO AO TRUCO MINEIRO!
+---------------------------------------------------
+
+Prepare-se para o blefe e a estrategia!
+O objetivo e simples: ser a primeira dupla a fazer 12 pontos.
+
+---
+
+>>> REGRAS ESSENCIAIS <<<
+
+1.  PARTICIPANTES E BARALHO:
+    * Quatro jogadores, formando duas duplas em posicoes alternadas.
+    * Baralho comum, SEM coringa e SEM as cartas 8, 9, 10.
+    * 3 cartas para cada participante.
+
+2.  PONTUACAO DAS CARTAS (da menor para a maior):
+    * 4, 5, 6, 7, Q, J, K, A, 2, 3
+    * Manilhas Fixas (sempre as mais fortes, em ordem):
+        * 4 de Paus
+        * 7 de Copas
+        * As de Espadas
+        * 7 de Ouros
+
+3.  ESTRUTURA DO JOGO:
+    * Rodada: Sequencia de 4 jogadas (uma carta por jogador).
+    * Mao: Composta de 2 a 3 rodadas.
+        * O jogador que jogar a carta mais alta vence a rodada.
+        * A dupla que vencer 2 das 3 rodadas leva a Mao.
+        * Empate na rodada: A dupla que ganhou a rodada anterior ou ganhar a proxima leva a mao.
+        * Empate em todas as rodadas: Nenhuma dupla pontua.
+    * Pontuacao: Uma Mao vale inicialmente 2 pontos. As maos sao jogadas
+                  sucessivamente ate uma dupla atingir 12 pontos.
+
+4.  AUMENTANDO A APOSTA (TRUCO!):
+    * Na sua vez e ANTES de jogar a carta, o jogador pode pedir:
+        * TRUCO!: Aumenta o valor da mao para 4 pontos.
+        * SEIS!: Aumenta o valor da mao para 6 pontos.
+        * DEZ!: Aumenta o valor da mao para 10 pontos.
+        * DOZE!: Aumenta o valor da mao para 12 pontos (fim de jogo).
+    * Ordem de aumento: 4 -> 6 -> 10 -> 12. Nao pode pular valores.
+    * Uma dupla nao pode pedir truco duas vezes seguidas.
+    * Respostas ao pedido de truco:
+        * Aceitar: A mao continua valendo o novo valor.
+        * Fugir: A dupla que fugiu PERDE, e a dupla que pediu o Truco
+                  ganha o valor ANTERIOR da mao em pontos.
+                  (Ex: Se valia 6 e pediu 10, fugir faz ganhar 6 pontos).
+        * Pedir o proximo valor: Continua a aposta.
+
+5.  CARTAS COBERTAS:
+    * Uma carta jogada virada (face para baixo) nao vale NADA.
+
+6.  MAOS ESPECIAIS:
+    * MAO DE 10: Quando uma das duplas atinge 10 pontos.
+        * Essa mao JA COMECA valendo 4 pontos.
+        * Nao se pode pedir truco na Mao de 10. Se uma dupla pedir,
+          ela perde o jogo automaticamente!
+    * MAO DE FERRO: Quando AMBAS as duplas estao com 10 pontos.
+        * Joga-se "no escuro" (jogadores nao podem ver suas cartas).
+        * O jogo e normal, exceto pela visibilidade das cartas.
+
+---
+
+Que venca a melhor dupla! Boa sorte e divirtam-se!
+---------------------------------------------------
