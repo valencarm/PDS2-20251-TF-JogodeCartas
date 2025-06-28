@@ -1,6 +1,6 @@
 #include "Carta.hpp"
 #include "Jogador.hpp"
-#include "Partida.cpp"
+#include "Partida.hpp"
 #include "Time.hpp"
 #include "Jogo.hpp"
 

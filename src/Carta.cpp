@@ -38,6 +38,27 @@ std::string Carta::getCarta() const {
 std::string Carta::getValor() const {
     return valor;
 }
+int Carta::getForca() const {
+    if (valor == "4" && naipe == "Paus") return 100;
+    if (valor == "7" && naipe == "Copas") return 99;
+    if (valor == "A" && naipe == "Espadas") return 98;
+    if (valor == "7" && naipe == "Ouros") return 97;
+
+    // valores normais
+    if (valor == "3") return 10;
+    if (valor == "2") return 9;
+    if (valor == "A") return 8;
+    if (valor == "K") return 7;
+    if (valor == "J") return 6;
+    if (valor == "Q") return 5;
+    if (valor == "7") return 4;
+    if (valor == "6") return 3;
+    if (valor == "5") return 2;
+    if (valor == "4") return 1;
+
+    return 0; // caso erro
+}
+
 
 bool Carta::comparaCarta(const Carta& c1, const Carta& c2) {
     std::string nome1 = c1.getCarta();

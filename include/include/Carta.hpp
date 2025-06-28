@@ -17,6 +17,7 @@ public:
 
     std::string getCarta() const;
     std::string getValor() const;
+    int getForca() const;
     static bool comparaCarta(const Carta& c1, const Carta& c2);
     static bool validaJogada(const std::vector<Carta>& maoJogador, const Carta& cartaJogada);
     
