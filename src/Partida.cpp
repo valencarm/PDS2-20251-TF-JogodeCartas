@@ -1,8 +1,16 @@
 #include "Partida.hpp"
+#include "Rodada.hpp"
+#include "Time.hpp"
 
 Partida::Partida(int conjuntoRegras, int modoJogo, int aposta, int pontuacaoMaxima)
     : conjuntoRegras(conjuntoRegras), modoJogo(modoJogo), aposta(aposta), pontuacaoMaxima(pontuacaoMaxima) {
     pontuacao = {0, 0}; 
+}
+
+Partida::Partida(Time t1, Time t2){
+    this->t1 = t1;
+    this->t2 = t2;
+    pontuacao = {0 , 0};
 }
 
 Partida::~Partida() {
@@ -41,14 +49,14 @@ void Partida::ConfigurarModo(int modo) {
     }
 }
 
-void Partida::setConjuntoregras(int regras) {
+/*void Partida::setConjuntoregras(int regras) {
     conjuntoRegras = regras;
 }
 
 void Partida::ConfigurarRegras(int regras) {
     setConjuntoregras(regras);
     std::cout << "Conjunto de regras configurado: " << regras << "\n";
-}
+}*/
 
 void Partida::setAposta(int valor) {
     aposta = valor;
@@ -59,9 +67,9 @@ void Partida::ConfigurarAposta(int valor) {
     std::cout << "Aposta configurada: " << valor << "\n";
 }
 
-void Partida::ConfigurarPartida(int modo, int regras, int valor_aposta) {
+void Partida::ConfigurarPartida(int modo, /*int regras,*/ int valor_aposta) {
     ConfigurarModo(modo);
-    ConfigurarRegras(regras);
+    //ConfigurarRegras(regras);
     ConfigurarAposta(valor_aposta);
 }
 
@@ -123,10 +131,17 @@ void Partida::exibirEstado() const {
     std::cout << "Pontuação Máxima: " << pontuacaoMaxima << "\n";
     std::cout << "==============================\n";
 }
+
   bool Partida::isMaoDeDez() const {
     return pontuacao[0] == 10 || pontuacao[1] == 10;
   }
 
    bool Partida::isMaoDeFerro() const {
     return pontuacao[0] == 10 && pontuacao[1] == 10;
+}
+
+void Partida::Jogar(){
+    do{
+        
+    }while(pontuacao.at(0) <= pontuacaoMaxima && pontuacao.at(1) <= pontuacaoMaxima);
 }

@@ -9,5 +9,6 @@ class Jogo{
         void Menu();
         void IniciarJogo();
         void ImprimirResultados();
+        void DefinirJogadores();
 };
 #endif

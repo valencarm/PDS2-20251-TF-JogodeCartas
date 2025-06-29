@@ -5,6 +5,8 @@
 #include <string>
 
 //Formar time
+Time::Time(){}
+
 Time::Time(Jogador& jogador1, Jogador& jogador2){
     this->time.push_back(jogador1);
     this->time.push_back(jogador2);
@@ -47,4 +49,13 @@ bool AceitarTruco(){
     }
 
     return false;
+}
+
+Time Time::operator=(Time const& t){
+    this->pontos = t.pontos;
+    for(int i = 0; i < 2; i++){
+        this->time.at(i) = t.time.at(i);
+    }
+
+    return *this;
 }

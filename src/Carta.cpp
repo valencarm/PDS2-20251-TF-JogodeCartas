@@ -87,3 +87,10 @@ bool Carta::validaJogada(const std::vector<Carta>& maoJogador, const Carta& cart
     }
     return false;
 }
+
+Carta Carta::operator=(Carta const& other){
+    this->naipe = other.naipe;
+    this->valor = other.valor;
+    
+    return *this;
+}

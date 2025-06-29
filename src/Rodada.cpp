@@ -5,7 +5,7 @@
 #include <iostream>
 #include <algorithm>
 
- Rodada::Rodada(Time* t1, Time* t2, const std::vector<Jogador*>& jogadores, Jogador* vencedorAnterior)
+Rodada::Rodada(Time* t1, Time* t2, const std::vector<Jogador*>& jogadores, Jogador* vencedorAnterior)
     : Time1(t1), vitoriasT1(0), Time2(t2), vitoriasT2(0), jogadoresRodada(jogadores), numeroRodada(1),
       pontoRodada(2), trucoPedido(false), jogadorAtual(nullptr) {}
 
@@ -83,6 +83,10 @@ void Rodada::proximoJogador(){
 
 }
 
+void respnderTruco(){
+
+}
+
 
 void Rodada::pedirTruco(Jogador* jogador) {
     if (trucoPedido) {
@@ -156,6 +160,8 @@ void Rodada::correrTruco() {
     }
     finalizarRodada();
 }
+
+
 
 // Termina a rodada, define o vencedor e atualiza os pontos
 void Rodada::finalizarRodada() {

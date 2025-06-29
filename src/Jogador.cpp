@@ -1,13 +1,19 @@
 #include "Jogador.hpp"
 #include "Time.hpp"
 #include <iostream>
+#include <vector>
 
-Jogador::Jogador(std::string nome, int id){
-    this->id = id;
+static int cont = 0;
+
+Jogador::Jogador(std::string nome){
     this->nome = nome;
+    this->id = cont;
+    cont++;
 }
-void Jogar(){
-
+Carta Jogador::Jogar(int id){
+    Carta carta = this->cartas.at(id);
+    cartas.erase(cartas.begin() + id);
+    return carta;
 }
 
 std::string Jogador::GetNome(){
@@ -19,7 +25,7 @@ int Jogador::GetId(){
 }
 
 void Jogador::ImprimirCartas(){
-    int cont = 1;
+    int cont = 0;
     for(Carta c : cartas){
         std::cout << "[" << cont << "] ";
         std::cout << c.getCarta() << std::endl;
@@ -29,4 +35,8 @@ void Jogador::ImprimirCartas(){
 
 void Trucar(Time& outroTime){
 
+}
+
+void Jogador::receberCarta(Carta carta){
+    this->cartas.push_back(carta);
 }

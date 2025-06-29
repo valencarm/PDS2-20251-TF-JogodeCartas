@@ -9,16 +9,17 @@
         private:
             std::string nome;
             int id;
-            std::list<Carta> cartas;
+            std::vector<Carta> cartas;
 
         public:
             Jogador();
-            Jogador(std::string nome, int id);
-            void Jogar();
+            Jogador(std::string nome);
+            Carta Jogar(int id);
             std::string GetNome();
             int GetId();
             void ImprimirCartas();
             void Trucar(Jogador& outro);
+            void receberCarta(Carta carta);
     };
 
 #endif

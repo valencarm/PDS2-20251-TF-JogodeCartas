@@ -12,22 +12,23 @@ void Jogo::Menu(){
     int opcao;
 
     do{
+        ImprimirMenu();
         std::cin >> opcao;
         switch (opcao)
         {
-        case '1':
+        case '0':
             ImprimirRegras();
             break;
-        case '2':
+        case '1':
             ImprimirResultados();
             break;
-        case '3':
+        case '2':
             //iniciar jogo
             break;
         default:
             break;
         }
-    }while(opcao != 3);
+    }while(opcao != 2);
 
 }
 
@@ -51,9 +52,56 @@ void Jogo::ImprimirMenu(){
     std::cout << "                       MENU" << std::endl;
     std::cout << "---------------------------------------------------" << std::endl << std::endl;
     std::cout << "Escolha uma opção:" << std::endl;
-    std::cout << "[1] Veja as Regras!" << std::endl;
-    std::cout << "[2] Veja os resultados das partidas anteriores!" << std::endl;
-    std::cout << "[3] Comece a jogar!" << std::endl;
-    std::cout << "[4] Sair" << std::endl << std::endl;
+    std::cout << "[0] Veja as Regras!" << std::endl;
+    std::cout << "[1] Veja os resultados das partidas anteriores!" << std::endl;
+    std::cout << "[2] Comece a jogar!" << std::endl;
+    std::cout << "[3] Sair" << std::endl << std::endl;
     std::cout << "---------------------------------------------------" << std::endl;
+}
+
+void Jogo::IniciarJogo(){
+    std::string nome1, nome2;
+    std::string nomeJ1T1, nomeJ2T1;
+    std::string nomeJ1T2, nomeJ2T2;
+    
+    std::cout << "---------------------------------------------------" << std::endl;
+    std::cout << "               DEFINA OS TIMES" << std::endl;
+    std::cout << "---------------------------------------------------" << std::endl << std::endl;
+    std::cout << "Digite o nome dos Jogadores do Time1: " << std::endl;
+    std::cin >> nomeJ1T1 >> nomeJ1T2;
+    Jogador jogador1Time1(nomeJ1T1);
+    Jogador jogador2Time1(nomeJ2T1);
+
+    Time time1(jogador1Time1, jogador2Time1);
+    
+    std::cout << "Digite o nome dos Jogadores do Time1: " << std::endl;
+    std::cin >> nomeJ1T2 >> nomeJ1T2;
+    Jogador jogador1Time2(nomeJ1T2);
+    Jogador jogador2Time2(nomeJ2T2);
+
+    Time time2(jogador2Time1, jogador2Time2);
+
+    std::cout << "---------------------------------------------------" << std::endl;
+    std::cout << "            ESCOLHA UM MODO DE JOGO" << std::endl;
+    std::cout << "---------------------------------------------------" << std::endl << std::endl;
+    std::cout << "Escolha uma opção:" << std::endl;
+    std::cout << "[0] Normal - 12 pontos" << std::endl;
+    std::cout << "[1] Rápido - 10 pontos" << std::endl;
+    std::cout << "[2] Duas quedas - 24 pontos" << std::endl << std::endl;
+    std::cout << "---------------------------------------------------" << std::endl;
+
+    Partida p(time1, time2);
+    int modo, aposta;
+
+    std::cin >> modo;
+    p.ConfigurarModo(modo);
+
+    std::cout << "---------------------------------------------------" << std::endl;
+    std::cout << "                  FAÇA A SUA APOSTA" << std::endl;
+    std::cout << "---------------------------------------------------" << std::endl << std::endl;
+    std::cout << " Digite um valor: ";
+    std::cin >> aposta;
+
+    p.ConfigurarPartida(modo, aposta);
+
 }

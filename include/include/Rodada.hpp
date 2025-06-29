@@ -40,7 +40,7 @@ class Rodada {
 
    public:
 
-   Rodada(Time* t1, Time* t2, const std::vector<Jogador*>& jogadores, Jogador* vencedorAnterior) {}
+   Rodada(Time* t1, Time* t2, const std::vector<Jogador*>& jogadores, Jogador* vencedorAnterior);
 
    void ordenarJogadores(Jogador* ultimoVencedor);
 

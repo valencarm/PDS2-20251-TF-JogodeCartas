@@ -10,13 +10,11 @@ class Time{
         std::vector<Jogador> time;
         int pontos;
     public: 
+        Time();
         Time(Jogador& jogador1, Jogador& jogador2);
         void ImprimirTime();
         int GetPontos();
         void GanharQueda(int valorQueda);
-        void AceitarTruco();
-        void GanharMao();
-
+        Time operator=(Time const& t);
 };
-
 #endif
