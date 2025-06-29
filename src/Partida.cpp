@@ -123,3 +123,10 @@ void Partida::exibirEstado() const {
     std::cout << "Pontuação Máxima: " << pontuacaoMaxima << "\n";
     std::cout << "==============================\n";
 }
+  bool Partida::isMaoDeDez() const {
+    return pontuacao[0] == 10 || pontuacao[1] == 10;
+  }
+
+   bool Partida::isMaoDeFerro() const {
+    return pontuacao[0] == 10 && pontuacao[1] == 10;
+}

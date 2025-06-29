@@ -21,6 +21,9 @@ public:
     void setModojogo(int modoJogo);
     void setPontuacaoMaxima(int modoJogo);
     void ConfigurarModo(int modoJogo);
+      //funcoes auxiliares
+      bool isMaoDeDez() const;
+      bool isMaoDeFerro() const;
 
     void setConjuntoregras(int conjuntoRegras);
     void ConfigurarRegras(int conjuntoRegras);
