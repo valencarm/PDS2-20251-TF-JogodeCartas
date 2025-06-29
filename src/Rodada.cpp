@@ -84,23 +84,33 @@ void Rodada::proximoJogador(){
 }
 
 
-void Rodada::pedirTruco() {
+void Rodada::pedirTruco(Jogador* jogador) {
+    if (trucoPedido) {
+        std::cout << "Truco já foi pedido anteriormente!\n";
+        return;
+    }
 
-    if (trucoPedido == true) {
-        std::cout << "Truco já foi pedido!\n";
+    if (pontoRodada != 2) {
+        std::cout << "Truco não pode ser pedido agora. Rodada já vale mais que 2 pontos.\n";
+        return;
     }
-    else if(pontuacao.find() == 10){
-        std::cout << "Não pode pedir truco!\n";
+
+    if (jogador != jogadorAtual) {
+        std::cout << "Apenas o jogador da vez pode pedir truco.\n";
+        return;
     }
-    else{
-        //Verificar se o truco foi aceito ou recusado, e chamar as funções para cada um
-    }
+
+    trucoPedido = true;
+    pontoRodada = NivelAposta::Truco;
+
+    std::cout << jogador->getNome() << " pediu TRUCO!\n";
 }
+
 
 void Rodada::pedirSeis() {
     //Verificar se o mesmo time pediu seis, e pediu truco
-    if (pontoRodada == 4) {
-        pontoRodada = 6;
+    if (pontoRodada == NivelAposta::Truco) {
+        pontoRodada = NivelAposta::Seis;
         std::cout << "Seis pedido!\n";
     }
     else{
@@ -109,8 +119,8 @@ void Rodada::pedirSeis() {
 }
 
 void Rodada::pedirNove() {
-    if (pontoRodada == 6) {
-        pontoRodada = 9;
+    if (pontoRodada == NivelAposta::Seis) {
+        pontoRodada = NivelAposta::Nove;
         std::cout << "Nove pedido!\n";
     }
     else{
@@ -119,8 +129,8 @@ void Rodada::pedirNove() {
 }
 
 void Rodada::pedirDoze() {
-    if (pontoRodada == 9) {
-        pontoRodada = 12;
+    if (pontoRodada == NivelAposta::Nove) {
+        pontoRodada = NivelAposta::Doze;
         std::cout << "Doze pedido!\n";
     }
     else{
@@ -131,18 +141,18 @@ void Rodada::pedirDoze() {
 //
 void Rodada::aceitarTruco() {
     trucoPedido = true;
-    pontosRodada = 4;
-    std::cout << "Truco aceito! Rodada valendo " << pontoRodada << " pontos.\n";
+    pontoRodada = NivelAposta::Truco;
+    std::cout << "Truco aceito! Rodada valendo " << static_cast<int>(pontoRodada) << " pontos.\n";
 }
 
 void Rodada::correrTruco() {
-    std::cout << "Truco recusado! Adversário ganha " << pontoRodada << " ponto(s).\n";
+    std::cout << "Truco recusado! Adversário ganha " << static_cast<int>(pontoRodada) << " ponto(s).\n";
 
     if (jogadorAtual->getTime() == Time1){
-        Time2->GanharQueda(pontoRodada);
+        Time2->GanharQueda(static_cast<int>(pontoRodada));
     }
     else{
-        Time1->GanharQueda(pontoRodada); 
+        Time1->GanharQueda(static_cast<int>(pontoRodada));
     }
     finalizarRodada();
 }
@@ -151,20 +161,21 @@ void Rodada::correrTruco() {
 void Rodada::finalizarRodada() {
     Time* vencedor = DefinirVencedorRodada();
     if (vencedor) {
-        vencedor->GanharQueda(pontoRodada);
-        std::cout << "Rodada finalizada. Pontos: " << pontoRodada << "\n";
+        vencedor->GanharQueda(static_cast<int>(pontoRodada));
+        std::cout << "Rodada finalizada. Pontos: " << static_cast<int>(pontoRodada) << "\n";
     } else {
         std::cout << "Rodada empatada.\n";
     }
 
     cartasRodada.clear();
-    pontoRodada = 2;
+    pontoRodada = NivelAposta::Normal;
     trucoPedido = false;
     numeroRodada++;
 }
 
 void Rodada::getvalorRodada() {
-    std::cout << "Rodada vale " << pontoRodada << " ponto(s).\n";
+    std::cout << "Rodada vale " << static_cast<int>(pontoRodada) << " ponto(s).\n";
+
 }
 
 void Rodada::getrodadaAtual() {
