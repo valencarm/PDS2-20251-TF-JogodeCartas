@@ -13,11 +13,18 @@
 #include "Carta.hpp"
 #include <vector>
 
+enum class NivelAposta {
+    Normal = 2,
+    Truco = 4,
+    Seis = 6,
+    Nove = 9,
+    Doze = 12
+};
 
 class Rodada {
     private:
 
-   int numeroRodada;
+   NivelAposta pontoRodada;
    std::vector<Jogador*> jogadoresRodada;
    std::vector<Carta*> cartasRodada;
 
