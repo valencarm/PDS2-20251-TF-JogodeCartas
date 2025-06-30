@@ -5,6 +5,14 @@
 #include <iostream>
 #include <algorithm>
 
+enum class NivelAposta {
+    Normal = 2,
+    Truco = 4,
+    Seis = 6,
+    Nove = 9,
+    Doze = 12
+};
+
 Rodada::Rodada(Time* t1, Time* t2, const std::vector<Jogador*>& jogadores, Jogador* vencedorAnterior)
     : Time1(t1), vitoriasT1(0), Time2(t2), vitoriasT2(0), jogadoresRodada(jogadores), numeroRodada(1),
       pontoRodada(2), trucoPedido(false), jogadorAtual(nullptr) {}
@@ -15,7 +23,7 @@ void Rodada::ordenarJogadores(Jogador* ultimoVencedor) {
     if (it != jogadoresRodada.end()) {
         std::rotate(jogadoresRodada.begin(), it, jogadoresRodada.end());
         jogadorAtual = jogadoresRodada[0]; 
-        std::cout << "Nova ordem dos jogadores (iniciando por: " << vencedorRodadaAnterior->getNome() << ")\n";
+        std::cout << "Nova ordem dos jogadores (iniciando por: " << vencedorRodadaAnterior.GetNome() << ")\n";
     } else {
         std::cerr << "Erro: Vencedor da rodada anterior não encontrado na lista de jogadores.\n";
         jogadorAtual = jogadoresRodada[0];
@@ -30,12 +38,12 @@ bool Rodada::ValidarJogada(Carta& carta, Jogador* jogador) {
 
 void Rodada::AdicionarCartaRodada(Carta& carta, Jogador* jogador) {
     if (!ValidarJogada(carta, jogador)) {
-        std::cout << "Jogada inválida de " << jogador->getNome() << "\n";
+        std::cout << "Jogada inválida de " << (*jogador).GetNome() << "\n";
         return;
     }
 
     cartasRodada.push_back(&carta);
-    std::cout << jogador->getNome() << " jogou: " << carta.toString() << "\n";
+    std::cout << jogador->GetNome() << " jogou: " << carta.getCarta() << "\n";
 
     proximoJogador();
 }
@@ -48,18 +56,18 @@ Jogador* Rodada::DefinirVencedorMao() {
     Jogador* vencedor = jogadoresRodada[0];
 
     for (size_t i = 1; i < cartasRodada.size(); ++i) {
-        if (cartasRodada[i]->getValorTruco() > melhor->getValorTruco()) {
+        if (cartasRodada[i]->getValor() > melhor->getValor()) {
             melhor = cartasRodada[i];
             vencedor = jogadoresRodada[i];
         }
     }
 
-    std::cout << "Vencedor da mão: " << vencedor->getNome() << "\n";
+    std::cout << "Vencedor da mão: " << vencedor->GetNome() << "\n";
 
     // Incrementa o contador de vitórias do time vencedor
-    if (vencedor->getTime() == Time1) {
+    if (vencedor->getTime() == 1) {
         vitoriasT1++;
-    } else if (vencedor->getTime() == Time2) {
+    } else if (vencedor->getTime() == 2) {
         vitoriasT2++;
     }
     else {
@@ -83,12 +91,46 @@ void Rodada::proximoJogador(){
 
 }
 
-void respnderTruco(){
+void Rodada::responderTruco(){
+    char resposta;
+    std::cout << "O jogador " << jogadorAtual->GetNome() << " pediu truco \n";
+    std::cout << "O time adversario vai aceitar? [S/N]";
+    
+    do{
+        std::cin >> resposta;
+        switch (toupper(resposta))
+        {
+        case 'S':
+            if(pontoRodada == 2){
+                pedirTruco();
+            } else if(pontoRodada == 4){
+                pedirSeis();
+            } else if(pontoRodada == 6){
+                pedirNove();
+            } else if(pontoRodada == 9){
+                pedirDoze();
+            } else if(pontoRodada == 12){
+                std::cout << "Não pode pedir mais pedir truco!";
+            }
+            break;
+        case 'N':
+            correrTruco();
+            break;
+        
+        default:
+            std::cout <<"Desculpe! Nao entendi sua resposta, digite um valor valido!\n Vai aceitar o truco? [S/N] ";
+            break;
+        }
+    }while(toupper(resposta) != 'S' || toupper(resposta) != 'N');
 
+
+    if(toupper(resposta) == 'S'){
+
+    } 
 }
 
 
-void Rodada::pedirTruco(Jogador* jogador) {
+void Rodada::pedirTruco() {
     if (trucoPedido) {
         std::cout << "Truco já foi pedido anteriormente!\n";
         return;
@@ -99,22 +141,17 @@ void Rodada::pedirTruco(Jogador* jogador) {
         return;
     }
 
-    if (jogador != jogadorAtual) {
-        std::cout << "Apenas o jogador da vez pode pedir truco.\n";
-        return;
-    }
-
     trucoPedido = true;
-    pontoRodada = NivelAposta::Truco;
-
-    std::cout << jogador->getNome() << " pediu TRUCO!\n";
+    std::cout << jogadorAtual->GetNome() << " pediu TRUCO!\n";
 }
 
 
 void Rodada::pedirSeis() {
+    NivelAposta ponto = NivelAposta::Truco;
     //Verificar se o mesmo time pediu seis, e pediu truco
-    if (pontoRodada == NivelAposta::Truco) {
-        pontoRodada = NivelAposta::Seis;
+    if (pontoRodada == static_cast<int>(ponto)) {
+        ponto = NivelAposta::Seis;
+        pontoRodada = static_cast<int>(ponto);
         std::cout << "Seis pedido!\n";
     }
     else{
@@ -123,8 +160,10 @@ void Rodada::pedirSeis() {
 }
 
 void Rodada::pedirNove() {
-    if (pontoRodada == NivelAposta::Seis) {
-        pontoRodada = NivelAposta::Nove;
+    NivelAposta ponto = NivelAposta::Seis;
+    if (pontoRodada == static_cast<int>(ponto)) {
+        ponto = NivelAposta::Nove;
+        pontoRodada = static_cast<int>(ponto);
         std::cout << "Nove pedido!\n";
     }
     else{
@@ -133,26 +172,29 @@ void Rodada::pedirNove() {
 }
 
 void Rodada::pedirDoze() {
-    if (pontoRodada == NivelAposta::Nove) {
-        pontoRodada = NivelAposta::Doze;
+    NivelAposta ponto = NivelAposta::Nove;
+    if (pontoRodada == static_cast<int>(ponto)) {
+        ponto = NivelAposta::Doze;
+        pontoRodada = static_cast<int>(ponto);
         std::cout << "Doze pedido!\n";
     }
     else{
-        std::cout << "Não pode pedir nove!\n";
+        std::cout << "Não pode pedir doze!\n";
     }
 }
 
 //
 void Rodada::aceitarTruco() {
     trucoPedido = true;
-    pontoRodada = NivelAposta::Truco;
+    NivelAposta ponto = NivelAposta::Truco;
+    pontoRodada = static_cast<int>(ponto);
     std::cout << "Truco aceito! Rodada valendo " << static_cast<int>(pontoRodada) << " pontos.\n";
 }
 
 void Rodada::correrTruco() {
     std::cout << "Truco recusado! Adversário ganha " << static_cast<int>(pontoRodada) << " ponto(s).\n";
 
-    if (jogadorAtual->getTime() == Time1){
+    if (jogadorAtual->getTime() == 1){
         Time2->GanharQueda(static_cast<int>(pontoRodada));
     }
     else{
@@ -174,7 +216,8 @@ void Rodada::finalizarRodada() {
     }
 
     cartasRodada.clear();
-    pontoRodada = NivelAposta::Normal;
+    NivelAposta ponto = NivelAposta::Truco;
+    pontoRodada = static_cast<int>(ponto);
     trucoPedido = false;
     numeroRodada++;
 }
@@ -203,7 +246,7 @@ void Rodada::executarRodada() {
 
     for (int i = 0; i < 3; ++i) {
         for (Jogador* j : jogadoresRodada) {
-            Carta carta = j->jogar();
+            Carta carta = j->Jogar();
             AdicionarCartaRodada(carta, j);
         }
         DefinirVencedorMao();

@@ -23,7 +23,7 @@ void Jogo::Menu(){
             ImprimirResultados();
             break;
         case '2':
-            //iniciar jogo
+            IniciarJogo();
             break;
         default:
             break;
@@ -69,15 +69,15 @@ void Jogo::IniciarJogo(){
     std::cout << "---------------------------------------------------" << std::endl << std::endl;
     std::cout << "Digite o nome dos Jogadores do Time1: " << std::endl;
     std::cin >> nomeJ1T1 >> nomeJ1T2;
-    Jogador jogador1Time1(nomeJ1T1);
-    Jogador jogador2Time1(nomeJ2T1);
+    Jogador jogador1Time1(nomeJ1T1, 1);
+    Jogador jogador2Time1(nomeJ2T1, 1);
 
     Time time1(jogador1Time1, jogador2Time1);
     
     std::cout << "Digite o nome dos Jogadores do Time1: " << std::endl;
     std::cin >> nomeJ1T2 >> nomeJ1T2;
-    Jogador jogador1Time2(nomeJ1T2);
-    Jogador jogador2Time2(nomeJ2T2);
+    Jogador jogador1Time2(nomeJ1T2, 2);
+    Jogador jogador2Time2(nomeJ2T2, 2);
 
     Time time2(jogador2Time1, jogador2Time2);
 
@@ -103,5 +103,5 @@ void Jogo::IniciarJogo(){
     std::cin >> aposta;
 
     p.ConfigurarPartida(modo, aposta);
-
+    p.Jogar();
 }

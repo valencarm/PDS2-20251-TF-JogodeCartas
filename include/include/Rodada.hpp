@@ -5,33 +5,24 @@
 
 // Colaboracoes: Time, Partida, Jogador
 
-#ifdef RODADA_H
+#ifndef RODADA_H
 #define RODADA_H
 #include "Time.hpp"
 #include "Partida.hpp"
 #include "Jogador.hpp"
 #include "Carta.hpp"
 #include <vector>
-
-enum class NivelAposta {
-    Normal = 2,
-    Truco = 4,
-    Seis = 6,
-    Nove = 9,
-    Doze = 12
-};
-
 class Rodada {
     private:
 
-   NivelAposta pontoRodada;
    std::vector<Jogador*> jogadoresRodada;
    std::vector<Carta*> cartasRodada;
+   Jogador vencedorRodadaAnterior;
 
    Time* Time1;
    Time* Time2;
    int vitoriasT1, vitoriasT2;
-
+   int numeroRodada;
    Jogador* jogadorAtual;
    Jogador* vencedorAnterior;
 
@@ -56,6 +47,7 @@ class Rodada {
    void pedirDoze();
    void aceitarTruco();
    void correrTruco();
+   void responderTruco();
 
    void finalizarRodada();
 
