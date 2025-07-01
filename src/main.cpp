@@ -45,8 +45,8 @@ int main() {
                 std::cout << "Digite o valor da aposta inicial: ";
                 std::cin >> aposta;
 
-                Partida partida;
-                partida.ConfigurarPartida(modo, regras, aposta);
+               Partida partida(0, 0, 0, 12);
+                partida.ConfigurarPartida(modo, aposta);
 
             
                 std::vector<Jogador*> jogadores;
