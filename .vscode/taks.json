@@ -1,0 +1,47 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "make: build",
+      "type": "shell",
+      "command": "make",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": ["$gcc"],
+      "detail": "Compila o projeto usando o Makefile"
+    },
+
+    {
+      "label": "make: run",
+      "type": "shell",
+      "command": "${workspaceFolder}/bin/meu_programa.exe",
+      "dependsOn": ["make: build"],
+      "group": "test",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "focus": true
+      },
+      "detail": "Executa o programa compilado"
+    },
+
+    {
+      "label": "make: clean",
+      "type": "shell",
+      "command": "make clean",
+      "problemMatcher": [],
+      "detail": "Remove arquivos gerados (bin/ e obj/)"
+    },
+
+    {
+      "label": "make: rebuild",
+      "type": "shell",
+      "command": "make clean && make",
+      "group": "build",
+      "problemMatcher": ["$gcc"],
+      "detail": "Recompila tudo do zero"
+    }
+  ]
+}
