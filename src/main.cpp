@@ -57,9 +57,8 @@ int main() {
                     jogadores.push_back(new Jogador(nome, i % 2)); // Alterna entre time 0 e 1
                 }
 
-        
-                Time* time1 = new Time("Time 1", {jogadores[0], jogadores[2]});
-                Time* time2 = new Time("Time 2", {jogadores[1], jogadores[3]});
+                Time* time1 = new Time(*jogadores[0], *jogadores[2]);
+                Time* time2 = new Time(*jogadores[1], *jogadores[3]);
 
            
                 Baralho baralho;

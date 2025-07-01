@@ -19,11 +19,11 @@ Rodada::Rodada(Time* t1, Time* t2, const std::vector<Jogador*>& jogadores, Jogad
 
 
 void Rodada::ordenarJogadores(Jogador* ultimoVencedor) {
-    auto it = std::find(jogadoresRodada.begin(), jogadoresRodada.end(), vencedorRodadaAnterior);
+    auto it = std::find(jogadoresRodada.begin(), jogadoresRodada.end(), ultimoVencedor);
     if (it != jogadoresRodada.end()) {
         std::rotate(jogadoresRodada.begin(), it, jogadoresRodada.end());
         jogadorAtual = jogadoresRodada[0]; 
-        std::cout << "Nova ordem dos jogadores (iniciando por: " << vencedorRodadaAnterior.GetNome() << ")\n";
+        std::cout << "Nova ordem dos jogadores (iniciando por: " << ultimoVencedor->GetNome() << ")\n";
     } else {
         std::cerr << "Erro: Vencedor da rodada anterior não encontrado na lista de jogadores.\n";
         jogadorAtual = jogadoresRodada[0];
@@ -242,7 +242,7 @@ void Rodada::executarRodada() {
         std::cout << "Erro: Nenhum jogador disponivel para jogar.\n";
         return;
     }
-    ordenarJogadores();
+     ordenarJogadores(nullptr);
 
     for (int i = 0; i < 3; ++i) {
         for (Jogador* j : jogadoresRodada) {
