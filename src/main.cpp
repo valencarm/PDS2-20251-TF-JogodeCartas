@@ -63,7 +63,14 @@ int main() {
            
                 Baralho baralho;
                 baralho.embaralharCartas();
-                baralho.distribuirCartas({*jogadores[0], *jogadores[1], *jogadores[2], *jogadores[3]});
+                std::vector<Jogador> jogadoresObj = {
+                    *jogadores[0],
+                    *jogadores[1],
+                    *jogadores[2],
+                    *jogadores[3]
+                 };
+
+                  baralho.distribuirCartas(jogadoresObj);
 
             
                 Rodada rodada(time1, time2, jogadores, nullptr);

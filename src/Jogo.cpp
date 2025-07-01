@@ -1,6 +1,6 @@
 #include "Carta.hpp"
 #include "Jogador.hpp"
-#include "Partida.cpp"
+#include "Partida.hpp"
 #include "Time.hpp"
 #include "Jogo.hpp"
 #include <string>
@@ -104,4 +104,7 @@ void Jogo::IniciarJogo(){
 
     p.ConfigurarPartida(modo, aposta);
     p.Jogar();
+}
+void Jogo::ImprimirResultados() {
+    std::cout << "resultados ";
 }

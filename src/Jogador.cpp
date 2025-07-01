@@ -5,7 +5,7 @@
 #include <vector>
 
 static int cont = 0;
-
+Jogador::Jogador() : nome(""), time(0) {}
 Jogador::Jogador(std::string nome, int time){
     this->nome = nome;
     this->id = cont;
