@@ -1,6 +1,6 @@
 # === VARIÁVEIS DE CONFIGURAÇÃO ===
 CXX := g++
-CXXFLAGS := -Wall -Wextra -Iinclude -std=c++17 -g
+CXXFLAGS := -Wall -Wextra -Iinclude -std=c++14 -g
 LDFLAGS := 
 
 SRC_DIR := src
